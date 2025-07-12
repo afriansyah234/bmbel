@@ -1,0 +1,55 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title fw-semibold mb-4">Form Edit Data</h5>
+                <div class="card">
+                    <div class="card-body">
+                        <form action="{{ route('mapel.update', $mapels->id) }}" method="POST" class="mb-3 needs-validation"
+                            novalidate>
+                            @csrf
+                            @method('PUT')
+                            <div class="mb-3">
+                                <label for="nama_mapel" class="form-label">Nama</label>
+                                <input type="text" class="form-control" id="nama_mapel" name="nama_mapel"
+                                    value="{{ $mapels->nama_mapel }}" required>
+                                <div class="form-text">Masukkan Mapel Yang Ingin Ditambahkan</div>
+                                <div class="valid-feedback">
+                                    Bagus
+                                </div>
+                                <div class="invalid-feedback">
+                                    masukkan nama Mapel
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+@push('script')
+    <script>
+        (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+@endpush
