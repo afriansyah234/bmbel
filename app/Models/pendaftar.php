@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class pendaftar extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $fillable = [
         'nama_pendaftar',
@@ -16,8 +16,6 @@ class pendaftar extends Model
         'tanggal_daftar',
         'status_pendaftaran'
     ];
-
-    protected $dates = ['delete_at'];
 
     public function jadwal()
     {
