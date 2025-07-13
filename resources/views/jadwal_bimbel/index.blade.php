@@ -44,9 +44,6 @@
                                         Biaya
                                     </th>
                                     <th class="px-0 text-muted" scope="col">
-                                        jumlah pendaftar
-                                    </th>
-                                    <th class="px-0 text-muted" scope="col">
                                         Aksi
                                     </th>
                                 </tr>
@@ -62,7 +59,6 @@
                                         <td class="px-0">{{ substr($jadwal->jam_mulai, 0, 5) }}</td>
                                         <td class="px-0">{{ substr($jadwal->jam_selesai, 0, 5) }}</td>
                                         <td class="px-0">Rp{{ number_format($jadwal->biaya, 0, ',', '.') }}</td>
-                                        <td>{{ $jadwal->pendaftar_count }}</td>
                                         <td class="px-0">
                                             <a href="{{ route('jadwal.edit', $jadwal->id) }}" class="btn btn-warning"><i
                                                     class="bi bi-pencil-square"></i></a>
