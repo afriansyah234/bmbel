@@ -26,8 +26,13 @@
                             <div class="mb-3">
                                 <label for="kapasitas" class="form-label">Kapasitas</label>
                                 <input type="number" class="form-control" name="kapasitas" value="{{ $kelas->kapasitas }}"
-                                    required>
+                                    required @error('kapasitas') is-invalid @enderror>
                                 <div class="form-text">Masukkan kapasitas Kelas</div>
+                                @error('kapasitas')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                                 <div class="valid-feedback">
                                     Bagus
                                 </div>

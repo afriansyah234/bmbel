@@ -70,6 +70,12 @@ class KelasController extends Controller
 
         $kelas = kelas::findOrFail($id);
 
+        $pendaftar = $kelas->jadwal()->withCount('pendaftar')->get()->sum('pendaftar_count');
+
+        if ($validasi['kapasitas'] < $pendaftar) {
+            return back()->withErrors(['kapasitas', 'kapasitas tidak boleh kurang dari pendaftar yang sudah ada(' . $pendaftar . ')'])->withInput();
+        }
+
         $kelas->update($validasi);
 
         return redirect()->route('kelas.index', compact('kelas'));

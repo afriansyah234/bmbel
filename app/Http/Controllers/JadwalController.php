@@ -16,7 +16,7 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        $jadwals = jadwal_bimbel::with('pendaftar')->get();
+        $jadwals = jadwal_bimbel::withCount('pendaftar')->get();
 
         return view('jadwal_bimbel.index', compact('jadwals'));
     }
