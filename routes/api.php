@@ -32,20 +32,20 @@ Route::post('/login', function (Request $request) {
 
 Route::get('/pendaftar/{id}/pdf/download', [PendaftarApiController::class, 'downloadPdf']);
 
-Route::middleware('auth:sanctum')->group(function () {
-
-
+Route::middleware('auth:sanctum', 'is_admin')->group(function () {
+    Route::get('/pendaftar', [PendaftarApiController::class, 'index']);
+    Route::get('/pendaftar/{id}', [PendaftarApiController::class, 'show']);
+    Route::post('/pendaftar', [PendaftarApiController::class, 'store']);
+    Route::put('/pendaftar/{id}', [PendaftarApiController::class, 'update']);
+    Route::delete('/pendaftar/{id}', [PendaftarApiController::class, 'destroy']);
+});
+Route::middleware('auth:sanctum', 'is_user')->group(function () {
 
     Route::get('/test-log', function () {
         Log::info('✅ Tes log berhasil');
         return 'Log dicetak';
     });
 
-    Route::get('/pendaftar', [PendaftarApiController::class, 'index']);
-    Route::get('/pendaftar/{id}', [PendaftarApiController::class, 'show']);
-    Route::post('/pendaftar', [PendaftarApiController::class, 'store']);
-    Route::put('/pendaftar/{id}', [PendaftarApiController::class, 'update']);
-    Route::delete('/pendaftar/{id}', [PendaftarApiController::class, 'destroy']);
     Route::get('/pendaftar/{id}/pdf', [PendaftarApiController::class, 'cetakPdf']);
 
 });
