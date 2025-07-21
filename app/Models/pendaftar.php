@@ -14,7 +14,8 @@ class pendaftar extends Model
         'nama_pendaftar',
         'jadwal_bimbel_id',
         'tanggal_daftar',
-        'status_pendaftaran'
+        'status_pendaftaran',
+        'foto'
     ];
 
     public function jadwal()
